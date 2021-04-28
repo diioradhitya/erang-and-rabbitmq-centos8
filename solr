@@ -1,0 +1,60 @@
+#!/bin/bash
+# description: solr Start Stop Restart
+# processname: solr
+# chkconfig: 234 20 80
+export SOLR_BASE=/opt/solr-5.2.1
+export SOLR_USER=sduser
+solr_pid() {
+       echo `ps -fe | grep $SOLR_BASE | grep -v grep | tr -s " "|cut -d" " -f2`
+}
+start() {
+ pid=$(solr_pid)
+ if [ -n "$pid" ]
+ then
+       {
+   echo -e "\e[00;32msolr is already running (pid: $pid)\e[00m"
+}
+else
+        # Start solr
+       {
+       /bin/su $SOLR_USER -c '/opt/solr-5.2.1/bin/solr start -cloud -z 127.0.0.1:2181 -noprompt'
+       }
+fi
+return 0
+       }
+
+stop() { 
+ pid=$(solr_pid) 
+ if [ -n "$pid" ] 
+ then
+       #Stop solr
+       {
+       /bin/su $SOLR_USER -c '/opt/solr-5.2.1/bin/solr stop -cloud -z 127.0.0.1:2181 -noprompt -all' 2>> 
+/dev/null
+       }
+
+else
+       {
+       echo -e "\e[00;31msolr is not running\e[00m"
+       }
+ fi
+
+ return 0
+}
+
+case $1 in
+       start)
+       start
+;;
+       stop)
+       stop
+;;
+       restart)
+       stop
+       echo -e "\e[00;32mrestarting solr\e[00m"
+sleep 10;
+       start 
+;; 
+esac
+exit 0
+#############
