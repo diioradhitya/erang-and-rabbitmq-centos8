@@ -32,7 +32,7 @@
 #SOLR_START_WAIT="$SOLR_STOP_WAIT"
 
 # Increase Java Heap as needed to support your indexing / query needs
-#SOLR_HEAP="512m"
+SOLR_HEAP="1g"
 
 # Expert: If you want finer control over memory options, specify them directly
 # Comment out SOLR_HEAP if you are using this though, that takes precedence
@@ -120,7 +120,7 @@ SOLR_HOME="/data/solr_data"
 #SOLR_LOG_LEVEL=INFO
 
 # Location where Solr should write logs to. Absolute or relative to solr start dir
-#SOLR_LOGS_DIR=logs
+SOLR_LOGS_DIR=/data/solr_data/logs
 
 # Enables log rotation before starting Solr. Setting SOLR_LOG_PRESTART_ROTATION=true will let Solr take care of pre
 # start rotation of logs. This is false by default as log4j2 handles this for us. If you choose to use another log
@@ -193,11 +193,11 @@ SOLR_HOME="/data/solr_data"
 #SOLR_AUTHENTICATION_OPTS="-Dbasicauth=solr:SolrRocks"
 
 # Settings for ZK ACL
-#SOLR_ZK_CREDS_AND_ACLS="-DzkACLProvider=org.apache.solr.common.cloud.VMParamsAllAndReadonlyDigestZkACLProvider \
-#  -DzkCredentialsProvider=org.apache.solr.common.cloud.VMParamsSingleSetCredentialsDigestZkCredentialsProvider \
-#  -DzkDigestUsername=admin-user -DzkDigestPassword=CHANGEME-ADMIN-PASSWORD \
-#  -DzkDigestReadonlyUsername=readonly-user -DzkDigestReadonlyPassword=CHANGEME-READONLY-PASSWORD"
-#SOLR_OPTS="$SOLR_OPTS $SOLR_ZK_CREDS_AND_ACLS"
+SOLR_ZK_CREDS_AND_ACLS="-DzkACLProvider=org.apache.solr.common.cloud.VMParamsAllAndReadonlyDigestZkACLProvider \
+  -DzkCredentialsProvider=org.apache.solr.common.cloud.VMParamsSingleSetCredentialsDigestZkCredentialsProvider \
+  -DzkDigestUsername=admin-user -DzkDigestPassword='$martD0cs' \
+  -DzkDigestReadonlyUsername=readonly-user -DzkDigestReadonlyPassword='$martD0cs'"
+SOLR_OPTS="$SOLR_OPTS $SOLR_ZK_CREDS_AND_ACLS"
 
 
 # Settings for common system values that may cause operational imparement when system defaults are used.
