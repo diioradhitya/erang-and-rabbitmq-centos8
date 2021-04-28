@@ -2,7 +2,7 @@
 # description: solr Start Stop Restart
 # processname: solr
 # chkconfig: 234 20 80
-export SOLR_BASE=/opt/solr-5.2.1
+export SOLR_BASE=/opt/solr-8.8.2
 export SOLR_USER=sduser
 solr_pid() {
        echo `ps -fe | grep $SOLR_BASE | grep -v grep | tr -s " "|cut -d" " -f2`
@@ -17,7 +17,7 @@ start() {
 else
         # Start solr
        {
-       /bin/su $SOLR_USER -c '/opt/solr-5.2.1/bin/solr start -cloud -z 127.0.0.1:2181 -noprompt'
+       /bin/su $SOLR_USER -c '/opt/solr-8.8.2/bin/solr start -cloud -z 127.0.0.1:2181 -noprompt'
        }
 fi
 return 0
@@ -29,7 +29,7 @@ stop() {
  then
        #Stop solr
        {
-       /bin/su $SOLR_USER -c '/opt/solr-5.2.1/bin/solr stop -cloud -z 127.0.0.1:2181 -noprompt -all' 2>> /dev/null
+       /bin/su $SOLR_USER -c '/opt/solr-8.8.2/bin/solr stop -cloud -z 127.0.0.1:2181 -noprompt -all' 2>> /dev/null
        }
 
 else
