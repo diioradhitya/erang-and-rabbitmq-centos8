@@ -29,8 +29,7 @@ stop() {
  then
        #Stop solr
        {
-       /bin/su $SOLR_USER -c '/opt/solr-5.2.1/bin/solr stop -cloud -z 127.0.0.1:2181 -noprompt -all' 2>> 
-/dev/null
+       /bin/su $SOLR_USER -c '/opt/solr-5.2.1/bin/solr stop -cloud -z 127.0.0.1:2181 -noprompt -all' 2>> /dev/null
        }
 
 else
