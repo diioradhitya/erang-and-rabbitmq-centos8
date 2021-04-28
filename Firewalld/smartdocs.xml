@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Smartdocs DB Server</short>
+  <description>Smartdocs DB Server Firewall</description>
+  <port protocol="tcp" port="22"/>
+  <port protocol="tcp" port="3306"/>
+  <port protocol="tcp" port="5672"/>
+  <port protocol="tcp" port="15672"/>
+  <port protocol="tcp" port="2181"/>
+  <port protocol="tcp" port="8983"/>
+</service>
