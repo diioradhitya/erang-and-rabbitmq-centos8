@@ -506,7 +506,7 @@
 	<fieldType name="auto_complete_text" class="solr.TextField" positionIncrementGap="100">
 		<analyzer type="index">
 		   <tokenizer class="solr.KeywordTokenizerFactory"/>
-		   <filter class="solr.EdgeNGramFilterFactory" maxGramSize="100"/>
+		   <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="100"/>
 		   <filter class="solr.LowerCaseFilterFactory"/>
 		</analyzer>
 		<analyzer type="query">
