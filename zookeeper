@@ -1,0 +1,20 @@
+#!/bin/bash
+# description: zookeeper Start Stop Restart
+# processname: solr
+# chkconfig: 234 20 80
+case $1 in
+start)
+/bin/su sduser /opt/zookeeper-3.4.6/bin/zkServer.sh start
+;;
+stop)
+/bin/su sduser /opt/zookeeper-3.4.6/bin/zkServer.sh stop
+;;
+restart)
+/bin/su sduser /opt/zookeeper-3.4.6/bin/zkServer.sh restart
+;;
+status)
+/bin/su sduser /opt/zookeeper-3.4.6/bin/zkServer.sh status
+;;
+esac 
+exit 0 
+############# 
